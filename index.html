@@ -1,77 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ChatGPT 网站示例</title>
-    <script src="https://cdn.jsdelivr.net/npm/@openai/chatgpt@0.8.2/dist/index.js"></script>
-</head>
-<body>
-    <div id="chat-container">
-        <div id="chat-log"></div>
-        <input type="text" id="user-input" placeholder="在这里输入您的消息..." />
-        <button id="send-btn">发送</button>
-    </div>
-
-    <script>
-        const chatLog = document.querySelector('#chat-log');
-        const userInput = document.querySelector('#user-input');
-        const sendButton = document.querySelector('#send-btn');
-
-        // 创建 ChatGPT 实例
-        const chatgpt = new ChatGPT({
-            model: 'gpt-3.5-turbo',
-            token: '您在 OpenAI 上创建的访问令牌', // 替换为您的访问令牌
-            maxTokens: 100,
-        });
-
-        sendButton.addEventListener('click', async () => {
-            await sendMessage();
-        });
-
-        userInput.addEventListener('keydown', async (event) => {
-            if (event.key === 'Enter') {
-                await sendMessage();
-            }
-        });
-
-        async function sendMessage() {
-            const userMessage = userInput.value;
-            appendMessage(userMessage, 'user');
-            userInput.value = '';
-
-            const chatResult = await chatgpt.send(userMessage);
-            const botMessage = chatResult.choices[0].message.content;
-            appendMessage(botMessage, 'bot');
-        }
-
-        function appendMessage(message, sender) {
-            const messageContainer = document.createElement('div');
-            messageContainer.classList.add('message', sender);
-            messageContainer.textContent = message;
-            chatLog.appendChild(messageContainer);
-        }
-    </script>
-
+    <meta charset="UTF-8">
+    <title>我的自我介绍</title>
     <style>
-        #chat-container {
-            width: 400px;
-            margin: auto;
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .message {
-            margin: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .user {
-            background-color: #e0e0e0;
-        }
-
-        .bot {
-            background-color: #f2f2f2;
+        p {
+            color: #666;
+            line-height: 1.6;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到我的个人网页！</h1>
+        <p>大家好，我是<span style="color: #FF69B4;">XXX</span>，一名<span style="color: #FF69B4;">XX专业</span>的学生。</p>
+        <p>我热爱<span style="color: #FF69B4;">编程</span>，喜欢挑战新技术、解决问题和创造有意义的应用。</p>
+        <p>我的技能包括但不限于：<span style="color: #FF69B4;">HTML/CSS</span>、<span style="color: #FF69B4;">JavaScript</span>、<span style="color: #FF69B4;">Python</span>等。</p>
+        <p>我也对<span style="color: #FF69B4;">前端开发</span>和<span style="color: #FF69B4;">用户界面设计</span>有着浓厚的兴趣。</p>
+        <p>除了技术方面，我还喜欢<span style="color: #FF69B4;">摄影</span>、<span style="color: #FF69B4;">旅行</span>和<span style="color: #FF69B4;">阅读</span>。</p>
+        <p>感谢您访问我的个人网页，如果您有任何问题或合作机会，请随时与我联系！</p>
+        <p>邮箱：<a href="mailto:yourname@example.com">yourname@example.com</a></p>
+    </div>
 </body>
 </html>
  
